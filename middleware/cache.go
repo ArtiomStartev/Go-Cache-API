@@ -27,6 +27,7 @@ func CacheMiddleware(cache *cache.Cache) fiber.Handler {
 
 		c.Response().Header.Set("X-Cache-Status", "MISS")
 		if err := c.Next(); err != nil {
+			fmt.Println("Error in cache middleware: ", err)
 			return err
 		}
 
